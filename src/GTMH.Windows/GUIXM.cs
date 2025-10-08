@@ -157,5 +157,22 @@ namespace GTMH.S11n.GUI
     {
       return new FolderDlgLast(a_Dlg, a_Key);
     }
+    public static void ShowWarnDialog(this IWin32Window a_This, string a_Message, string ? a_Caption = null)
+    {
+      MessageBox.Show(a_This, a_Message, a_Caption ?? "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+    public static void ShowErrorDialog(this IWin32Window a_This, string a_Message, string ? a_Caption = null)
+    {
+      MessageBox.Show(a_This, a_Message, a_Caption ?? "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    public static void ShowInfoDialog(this IWin32Window a_This, string a_Message, string ? a_Caption = null)
+    {
+      MessageBox.Show(a_This, a_Message, a_Caption ?? "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+    public static DialogResult ShowConfirmDialog(this IWin32Window a_This, string a_Message, string ? a_Caption = null)
+    {
+      return MessageBox.Show(a_This, a_Message, a_Caption ?? "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+    }
+    public static DialogResult ShowQueryDialog(this IWin32Window a_This, string a_Message, string ? a_Caption = null) => ShowConfirmDialog(a_This, a_Message, a_Caption);
   }
 }
