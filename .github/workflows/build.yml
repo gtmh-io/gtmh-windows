@@ -33,4 +33,5 @@ jobs:
     - name: Publish to NuGet (only on main)
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: |
-        dotnet nuget push ./nupkgs/GTMH.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dir nupkgs
+        dotnet nuget push .\nupkgs\GTMH.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
