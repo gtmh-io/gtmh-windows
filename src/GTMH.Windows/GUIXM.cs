@@ -64,7 +64,7 @@ namespace GTMH.S11n.GUI
 			private string m_Key { get; }
       private bool m_Commit;
 
-			public FileDlgLast(FileDialog a_Dlg, string a_Key)
+			public FileDlgLast(FileDialog a_Dlg, string a_Key, string? a_Default)
 			{
 				this.m_Dlg = a_Dlg;
 				this.m_Key = a_Key;
@@ -74,7 +74,7 @@ namespace GTMH.S11n.GUI
         {
           try
           {
-            var last = Registry.GetValue(a_Key, "");
+            var last = Registry.GetValue(a_Key, a_Default??"");
             if (System.IO.Directory.Exists(last))
             {
               a_Dlg.InitialDirectory = last;
@@ -149,9 +149,9 @@ namespace GTMH.S11n.GUI
 			}
 		}
 
-		public static FileDlgLast LastLocation(this FileDialog a_Dlg, string a_Key)
+		public static FileDlgLast LastLocation(this FileDialog a_Dlg, string a_Key, string ? a_Default = null)
     {
-      return new FileDlgLast(a_Dlg, a_Key);
+      return new FileDlgLast(a_Dlg, a_Key, a_Default);
     }
 		public static FolderDlgLast LastLocation(this FolderBrowserDialog a_Dlg, string a_Key)
     {
