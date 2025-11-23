@@ -58,7 +58,7 @@ namespace GTMH
       }
       else
       {
-        return new[] { "Software", "GTMH", a_Basename };
+        return new[] { "Software", "GTMH" }.Concat(a_Basename.Split('/', '\\')).ToArray();
       }
     }
   }
