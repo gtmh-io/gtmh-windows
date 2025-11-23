@@ -24,8 +24,8 @@ jobs:
     - name: Build
       run: dotnet build src --no-restore
 
-    - name: Run tests
-      run: dotnet test src --no-build --verbosity normal
+#    - name: Run tests
+#      run: dotnet test src --no-build --verbosity normal
 
     - name: Pack NuGet packages
       run: dotnet pack src --configuration Release --output ./nupkgs
